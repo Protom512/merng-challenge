@@ -1,7 +1,27 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
-workflows:
-  node-tests:
-    jobs:
-      - node/test
+jobs: # 一連のステップ
+  build: # ワークフローを使用しない実行では、エントリポイントとして `build` ジョブが必要です
+    working_directory: ~/backend # ステップが実行されるディレクトリ
+    docker: # Docker でステップを実行します
+      - image: circleci/node:10.16.3 # このイメージをすべての `steps` が実行されるプライマリ コンテナとして使用します
+      - image: mongo:4.2.0 # このイメージをセカンダリ サービス コンテナとして使用します
+    steps: # 実行可能コマンドの集合
+      - checkout # ソース コードを作業ディレクトリにチェックアウトする特別なステップ
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache: # 依存関係キャッシュを復元する特別なステップ
+          # 依存関係キャッシュについては https://circleci.com/ja/docs/2.0/caching/ をお読みください
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install-npm-wee
+          command: npm install
+      - save_cache: # 依存関係キャッシュを保存する特別なステップ
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run: # テストを実行します
+          name: test
+          command: npm test
