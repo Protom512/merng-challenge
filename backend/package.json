@@ -7,6 +7,7 @@
     "start": "node src/index.js",
     "watch": "nodemon",
     "test": "jest",
+    "build": "webpack",
     "format": "prettier --write src/**/*js"
   },
   "repository": {
@@ -28,9 +29,17 @@
     "mongoose": "^5.11.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.1.2",
     "eslint": "^7.17.0",
     "eslint-config-google": "^0.14.0",
     "jest": "^26.6.3",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "regenerator-runtime": "^0.13.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.2"
   }
 }
