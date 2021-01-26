@@ -3,6 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-      "backend-start": "node backend/src/index.js"
+      "backend-start": "cd backend&& npm i && node src/index.js"
     }
 }
