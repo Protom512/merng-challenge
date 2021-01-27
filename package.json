@@ -1,8 +1,12 @@
 {
-    "name": "merng-challenge",
-    "version": "1.0.0",
-    "description": "",
-    "scripts": {
-      "backend-start": "cd backend&& npm i  --only=prod&& npm run start"
-    }
+  "name": "merng-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "backend-start": "cd backend&& npm i  --only=prod&& npm run start"
+  },
+  "engines": {
+    "node": "15.x",
+    "npm": "7.x"
+  }
 }
