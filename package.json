@@ -3,6 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-      "backend-start": "cd backend&& npm i && npm run start"
+      "backend-start": "cd backend&& npm i  --only=prod&& npm run start"
     }
 }
